@@ -11,13 +11,7 @@ class DashboardController extends Controller
 public function test(){
     return view('userprofile');
 }
-public function test2(){
-    return view('userprofile');
-}
-public function test3(){
-    return view('userprofile');
-}
-public function test4(){
-    return view('userprofile');
+public function index(){
+    return view('admin.admindashboard');
 }
 }
