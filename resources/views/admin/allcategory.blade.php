@@ -8,6 +8,13 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">All Category</h5>
             </div>
+            
+            @if(session()->has('message'))
+                <div class="alert alert-seccecc">
+                    {{session()->get('message')}}
+                </div>
+            @endif
+
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead class="table-light">
