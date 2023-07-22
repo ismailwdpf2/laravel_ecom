@@ -5,6 +5,11 @@ all-Subcategory
 @section('content')
 <div class="container">
     <div class="row card m-3 p-2">
+        @if (session()->has('message'))
+        <div class="alert alert-seccecc">
+            {{ session()->get('message') }}
+        </div>
+    @endif
         <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="mb-0">All Sub Category</h5>
         </div>
@@ -20,16 +25,18 @@ all-Subcategory
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>1</td>
-                        <td>Fan</td>
-                        <td>Electronics</td>
-                        <td>100</td>
-                        <td>
-                            <a href="" class="btn-primary">Edit</a>
-                            <a href="" class="btn-danger">Delete</a>
-                        </td>
-                    </tr>                    
+                    @foreach ($subcategories as $subcategory)
+                            <tr>
+                                <td>{{ $subcategory->id }}</td>
+                                <td>{{ $subcategory->subcategory_name }}</td>
+                                <td>{{ $subcategory->category_name }}</td>
+                                <td>{{ $subcategory->product_count }}</td>
+                                <td>
+                                    <a href="{{ route('editsubcategory', $subcategory->id)}}" class="btn-primary">Edit</a>
+                                    <a href="{{ route('deletesubcategory', $subcategory->id,$subcategory->category_id)}}" class="btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach            
                 </tbody>
             </table>
         </div>

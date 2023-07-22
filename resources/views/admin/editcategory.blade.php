@@ -20,7 +20,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('updatecategory') }}" method="GET">
+                        <form action="{{ route('updatecategory') }}" method="POST">
                             @csrf
                             <input type="hidden" value="{{ $category_info->id }}" name="category_id">
                             <div class="row mb-3">

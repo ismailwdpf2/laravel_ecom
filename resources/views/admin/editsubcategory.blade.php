@@ -1,6 +1,6 @@
 @extends('admin.layouts.tamplate')
 @section('page_title')
-    add-Subcategory
+    edid-Subcategory
 @endsection
 @section('content')
     <div class="container">
@@ -8,30 +8,17 @@
             <div class="col-xxl">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Add Sub Category</h5>
+                        <h5 class="mb-0">Edit Sub Category</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('storesubcategory') }}" method="POST">
+                        <form action="{{ route('updatesubcategory') }}" method="POST">
                             @csrf
+                            <input type="hidden" value="{{$subcategory_info->id}}" name="subcategory_id">
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Sub Category Name</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="subcategory_name" name="subcategory_name"
-                                        placeholder="Sub Category Name" />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-3 col-form-label" for="basic-default-name">Select Category</label>
-                                <div class="col-sm-8">
-                                    <select class="form-select" id="category_id" name="category_id"
-                                        aria-label="Default select example">
-
-                                        @foreach ($categories as $category)
-                                            <option selected value="{{ $category->id }}">{{ $category->category_name }}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
+                                        value="{{$subcategory_info->subcategory_name}}" />
                                 </div>
                             </div>
 
