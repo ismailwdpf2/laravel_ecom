@@ -18,25 +18,34 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/////Frontend routes///////
+Route::get('/', function () {
+    return view('welcome');
+});
 
+
+//////Admin routes////////
 Route::get('/userprofile', [DashboardController::class, 'test']);
 
 Route::get('/userprofile', function () {
     return view('userprofile');
 });
-#####group route with auth#######
+
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function () {
         Route::get('userprofile', 'test');
         Route::get('admindashboard', 'index')->name('admindashboard');
     });
+
     Route::controller(CategoryController::class)->group(function () {
         Route::get('all-category', 'index')->name('allcategory');
         Route::get('add-category', 'addcategory')->name('addcategory');
         Route::get('store-category', 'storecategory')->name('storecategory');
+        Route::get('edit-category/{id}', 'editcategory')->name('editcategory');
+        Route::get('update-category', 'updatecategory')->name('updatecategory');
+        Route::get('delete-category/{id}', 'deletecategory')->name('deletecategory');
     });
-
 
     Route::controller(SubCategoryController::class)->group(function () {
         Route::get('all-subCategory', 'index')->name('allsubcategory');
@@ -52,16 +61,10 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+////default Admin routes////////
 Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name("admin");
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

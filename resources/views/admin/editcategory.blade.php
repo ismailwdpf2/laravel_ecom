@@ -1,6 +1,6 @@
 @extends('admin.layouts.tamplate')
 @section('page_title')
-    add-category
+    edit-category
 @endsection
 @section('content')
     <div class="container">
@@ -8,7 +8,7 @@
             <div class="col-xxl">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Add Category</h5>
+                        <h5 class="mb-0">Edit Category</h5>
                     </div>
                     <div class="card-body">
                         @if ($errors->any())
@@ -20,21 +20,20 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('storecategory') }}"
-                            method="POST>
+                        <form action="{{ route('updatecategory') }}" method="GET">
                             @csrf
-                            <div class="row
-                            mb-3">
-                            <label class="col-sm-3 col-form-label" for="basic-default-name">Category Name</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="category_name" name="category_name"
-                                    placeholder="Category Name" />
+                            <input type="hidden" value="{{ $category_info->id }}" name="category_id">
+                            <div class="row mb-3">
+                                <label class="col-sm-3 col-form-label" for="basic-default-name">Category Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="category_name" name="category_name" value="{{ $category_info->category_name }}" />
+                                </div>
                             </div>
+                            <div class="justify-content-end p-3">
+                                <button type="submit" class="btn btn-success">Save Category</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="justify-content-end p-3">
-                        <button type="submit" class="btn btn-success rounded">Add Category</button>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
