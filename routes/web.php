@@ -58,7 +58,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('all-product', 'index')->name('allproduct');
-        Route::get('add-product', 'AddProduct')->name('addproduct');
+        Route::get('add-product', 'addproduct')->name('addproduct');
+        Route::post('storeproduct', 'storeproduct')->name('storeproduct');
     });
 
     Route::controller(OrderController::class)->group(function () {
