@@ -4,6 +4,11 @@ all-product
 @endsection
 @section('content')
 <div class="container">
+    @if (session()->has('message'))
+    <div class="alert alert-seccecc">
+        {{ session()->get('message') }}
+    </div>
+@endif
     <div class="row card m-3 p-2">
         <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="mb-0">All Product</h5>

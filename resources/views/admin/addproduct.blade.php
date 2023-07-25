@@ -11,7 +11,7 @@
                         <h5 class="mb-0">Add New Product</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('storeproduct') }}" enctype="multipart/form-data">
+                        <form action="{{ route('storeproduct') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Product Name</label>
