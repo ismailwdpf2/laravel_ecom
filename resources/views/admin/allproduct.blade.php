@@ -32,12 +32,12 @@ all-product
                         <td>
                             <img style="height: 100px;" src="{{asset($product->product_img)}}" alt="img">
                             <br>
-                            <a href="" class="btn-primary">Edit</a>
+                            <a href="{{route('editProductImg', $product->id) }}" class="btn-primary">Change Image</a>
                         </td>
                         <td>{{$product->price }}</td>
                         <td>
-                            <a href="" class="btn-primary">Edit</a>
-                            <a href="" class="btn-danger">Delete</a>
+                            <a href="{{ route('editproduct', $product->id) }}" class="btn-primary">Edit</a>
+                            <a href="{{ route('deleteproduct', $product->id) }}" class="btn-danger">Delete</a>
                         </td>
                     </tr>  
                     @endforeach                 

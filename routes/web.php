@@ -60,6 +60,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('all-product', 'index')->name('allproduct');
         Route::get('add-product', 'addproduct')->name('addproduct');
         Route::post('storeproduct', 'storeproduct')->name('storeproduct');
+        Route::get('edit-Product-Img/{id}', 'editProductImg')->name('editProductImg');
+        Route::post('updateproductimg', 'updateproductimg')->name('updateproductimg');
+        Route::get('edit-product/{id}', 'editproduct')->name('editproduct');
+        Route::post('updateproduct', 'updateproduct')->name('updateproduct');
+        Route::get('delete-product/{id}', 'deleteproduct')->name('deleteproduct');
     });
 
     Route::controller(OrderController::class)->group(function () {
