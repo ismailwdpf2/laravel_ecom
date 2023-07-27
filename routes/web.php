@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 /////Frontend routes///////
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.template');
 });
 
 
