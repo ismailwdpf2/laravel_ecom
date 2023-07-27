@@ -11,8 +11,7 @@
                         <h5 class="mb-0">Edit Product Img</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('updateproductimg') }}" enctype="multipart/form-data" method="POST">
-                            {{-- <form action="{{ route('editProductImg', ['id' => $productinfo->id]) }}" enctype="multipart/form-data" method="POST"> --}}
+                        <form action="{{ route('updateproductimg') }}" enctype="multipart/form-data" method="POST">                         
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Previes Image</label>

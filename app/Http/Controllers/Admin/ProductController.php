@@ -111,7 +111,6 @@ class ProductController extends Controller
     }
 
     public function deleteproduct($id){
-
         
         $category_id= Product::where('id',$id)->value('product_category_id');
         $subcategory_id= Product::where('id',$id)->value('product_subcategory_id');       
