@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SubCategoryController;
+use App\Http\Controllers\Frontend\ClinteController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +21,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /////Frontend routes///////
-Route::get('/', function () {
-    return view('frontend.template');
+// Route::get('/', function () {
+//     return view('frontend.template');
+// });
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
 });
 
+Route::controller(ClinteController::class)->group(function () {
+    Route::get('/category', 'categorypage')->name('category');
+    Route::get('single-page', 'singlepage')->name('singlepage');
+    Route::get('add-to-cart', 'addtocart')->name('addtocart');
+    Route::get('check-out', 'checkout')->name('checkout');
+    Route::get('user-profile', 'userprofile')->name('userprofile');
+    Route::get('customer-service', 'customerservice')->name('customerservice');
+});
 
 //////Admin routes////////
 Route::get('/userprofile', [DashboardController::class, 'test']);
@@ -49,11 +63,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(SubCategoryController::class)->group(function () {
         Route::get('all-subCategory', 'index')->name('allsubcategory');
-        Route::get('add-subCategory', 'addsubcategory')->name('addsubcategory');      
-        Route::post('store-subcategory', 'storesubcategory')->name('storesubcategory');  
+        Route::get('add-subCategory', 'addsubcategory')->name('addsubcategory');
+        Route::post('store-subcategory', 'storesubcategory')->name('storesubcategory');
         Route::get('edit-subCategory/{id}', 'editsubcategory')->name('editsubcategory');
         Route::post('update-subCategory', 'updatesubcategory')->name('updatesubcategory');
-        Route::get('delete-subCategory/{id}', 'deletesubcategory')->name('deletesubcategory');    
+        Route::get('delete-subCategory/{id}', 'deletesubcategory')->name('deletesubcategory');
     });
 
     Route::controller(ProductController::class)->group(function () {
