@@ -55,7 +55,7 @@ $categories= App\Models\Category::latest()->get();
                         <div class="custom_menu">
                             <ul>
                                 <li><a href="{{ route('home') }}">Home</a></li>
-                                <li><a href="{{ route('category') }}">Category</a></li>
+                                <li><a href="#">Category</a></li>
                                 <li><a href="#">New Releases</a></li>
                                 <li><a href="#">Today's Deals</a></li>
                                 <li><a href="{{ 'customer-service' }}">Customer Service</a></li>
@@ -66,46 +66,19 @@ $categories= App\Models\Category::latest()->get();
             </div>
         </div>
         <!-- header top section start -->
-        <!-- logo section start -->
-        {{-- <div class="logo_section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="logo"><a href="{{ asset('home/') }}index.html"><img
-                                    src="{{ asset('home/images/logo.png') }}"></a></div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- logo section end -->
+       
         <!-- header section start -->
         <div class="container header_section d-block ">
-            <div class=" bg-dark p-2">
-                <div class="containt_main">
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>   
-                        
-                {{--dynamic category --}}
-                        @foreach ($categories as $category )
-                        <a href="fashion.html">{{ $category->category_name }}</a>
-                        @endforeach
-
-                        {{-- <a href="electronic.html">Electronic</a>
-                        <a href="jewellery.html">Jewellery</a> --}}
-                    </div>
-                    <span class="toggle_icon" onclick="openNav()"><img
-                            src="{{ asset('home/images/toggle-icon.png') }}"></span>
+            <div class=" container bg-dark p-2">
+                <div class="containt_main">                                    
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @foreach ($categories as $category)
-                            <a class="dropdown-item" href="3">{{$category->category_name}}</a>
-                            @endforeach
-                          
-                        
+                            <a class="dropdown-item" href="{{ route('category',[$category->id,$category->slug]) }}">{{$category->category_name}}</a>
+                            @endforeach                                               
                         </div>
                     </div>
                     <div class="main">
@@ -121,21 +94,7 @@ $categories= App\Models\Category::latest()->get();
                         </div>
                     </div>
                     <div class="header_box">
-                        {{-- <div class="lang_box ">
-                            <a href="#" title="Language" class="nav-link" data-toggle="dropdown"
-                                aria-expanded="true">
-                                <img src="{{ asset('home/images/flag-uk.png') }}" alt="flag" class="mr-2 "
-                                    title="United Kingdom"> English <i class="fa fa-angle-down ml-2"
-                                    aria-hidden="true"></i>
-                            </a>
-                            <div class="dropdown-menu ">
-                                <a href="#" class="dropdown-item">
-                                    <img src="{{ asset('home/images/flag-france.png') }}" class="mr-2"
-                                        alt="flag">
-                                    French
-                                </a>
-                            </div>
-                        </div> --}}
+                      
                         <div class="login_menu ">
                             <ul>
                                 <li><a href="#">

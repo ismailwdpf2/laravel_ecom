@@ -30,7 +30,7 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 Route::controller(ClinteController::class)->group(function () {
-    Route::get('/category', 'categorypage')->name('category');
+    Route::get('/category/{id}/{slug}', 'categorypage')->name('category');
     Route::get('single-page', 'singlepage')->name('singlepage');
     Route::get('add-to-cart', 'addtocart')->name('addtocart');
     Route::get('check-out', 'checkout')->name('checkout');

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ClinteController extends Controller
 {
-    public function categorypage(){
-        return view('frontend.category');
+    public function categorypage($id){
+        $category = Category::findOrFail($id);
+        $products =Product::where('product_category_id', $id)->latest()->get();
+        return view('frontend.category', compact('category','products'));
     }
     public function singlepage(){
         return view('frontend.singlepage');
