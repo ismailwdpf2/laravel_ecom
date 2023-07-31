@@ -15,11 +15,11 @@
                                     <div class="col-lg-4 col-sm-4">
                                         <div class="box_main">
                                             <h4 class="shirt_text">{{ $allproduct->product_name }}</h4>
-                                            <p class="price_text">{{ $allproduct->price }}-TK
+                                            <p class="price_text">{{ $allproduct->price }}-TK </p>
                                             <div class="tshirt_img"><img src="{{ asset($allproduct->product_img) }}"></div>
                                             <div class="btn_main">
                                                 <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                                <div class="seemore_bt"><a href="#">See More</a></div>
+                                                <div class="seemore_bt"><a href="{{ route('singlepage',[$allproduct->id, $allproduct->slug]) }}">See More</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -28,6 +28,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 {{-- <div class="carousel-item"> --}}
                     <div class="container">
                         <h1 class="fashion_taital">Man & Woman Fashion</h1>

@@ -14,8 +14,11 @@ class ClinteController extends Controller
         $products =Product::where('product_category_id', $id)->latest()->get();
         return view('frontend.category', compact('category','products'));
     }
-    public function singlepage(){
-        return view('frontend.singlepage');
+    public function singlepage($id){
+        $product = Product::findOrFail($id);
+        $subcat_id = Product::where('id',$id)->value('product_subcategory_id');
+        $related_product = Product::where('product_subcategory_id', $subcat_id)->latest()->get();
+        return view('frontend.singlepage', compact('product','related_product'));
     }
     public function addtocart(){
         return view('frontend.addtocart');
