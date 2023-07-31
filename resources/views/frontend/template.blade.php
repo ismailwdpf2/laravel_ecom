@@ -1,9 +1,10 @@
 @php
-$categories= App\Models\Category::latest()->get();            
+    $categories = App\Models\Category::latest()->get();
 @endphp
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- basic -->
     <meta charset="utf-8">
@@ -59,26 +60,54 @@ $categories= App\Models\Category::latest()->get();
                                 <li><a href="#">New Releases</a></li>
                                 <li><a href="#">Today's Deals</a></li>
                                 <li><a href="{{ 'customer-service' }}">Customer Service</a></li>
+                                {{-- login reg and logout --}}
+
+
+                                <li>
+                                    @if (Auth::check())
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+
+                                            <x-responsive-nav-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                          this.closest('form').submit();">
+                                                {{ __('Log Out') }}
+
+                                                {{-- {{Auth::user()->name}} --}}
+                                            </x-responsive-nav-link>
+                                        </form>
+                                    @else
+                                        <a href="{{ route('login') }}">Login</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}">Register</a>
+
+                                </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- header top section start -->
-       
+
         <!-- header section start -->
         <div class="container header_section d-block ">
             <div class=" container bg-dark p-2">
-                <div class="containt_main">                                    
+                <div class="containt_main">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @foreach ($categories as $category)
-                            <a class="dropdown-item" href="{{ route('category',[$category->id,$category->slug]) }}">{{$category->category_name}}</a>
-                            @endforeach                                               
+                                <a class="dropdown-item"
+                                    href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="main">
@@ -94,17 +123,18 @@ $categories= App\Models\Category::latest()->get();
                         </div>
                     </div>
                     <div class="header_box">
-                      
+
                         <div class="login_menu ">
                             <ul>
                                 <li><a href="#">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span class="padding_10">Cart</span></a>
                                 </li>
-                                <li><a href="#">
+                                {{-- <li>
+                                    <a href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="padding_10">Cart</span></a>
-                                </li>
+                                        <span class="padding_10">Profile</span></a>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -113,7 +143,7 @@ $categories= App\Models\Category::latest()->get();
         </div>
         <!-- header section end -->
         <!-- banner section start -->
-        
+
         <!-- banner section end -->
     </div>
     <!-- banner bg main end -->

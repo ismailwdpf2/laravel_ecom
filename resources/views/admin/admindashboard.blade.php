@@ -3,5 +3,5 @@
 Dashboard-laravel-ecom
 @endsection
 @section('content')
-<h1>template and dashboard</h1>
+<h1>Dashboard</h1>
 @endsection

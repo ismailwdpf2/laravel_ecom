@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function () {
         Route::get('userprofile', 'test');
-        Route::get('admindashboard', 'index')->name('admindashboard');
+        Route::get('/admin', 'index')->name('admindashboard');
     });
 
     Route::controller(CategoryController::class)->group(function () {
@@ -87,10 +87,11 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+
 ////default Admin routes////////
-Route::get('/admin', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name("admin");
+// Route::get('/admin', function () {
+//     return view('dashboard');  
+// })->middleware(['auth', 'verified'])->name("admin");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

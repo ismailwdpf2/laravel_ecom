@@ -55,7 +55,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="{{ route('admindashboard') }}" class="app-brand-link">
+                    <a href="{{ route('allproduct') }}" class="app-brand-link">
 
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">Laravel Ecom</span>
                     </a>
@@ -63,22 +63,22 @@
                     <a href="javascript:void(0);"
                         class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
-                    </a>
+                    </a>               
                 </div>
+                <a href="{{'/'}}">back to home</a>
 
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="{{ route('admindashboard') }}" class="menu-link">
+                        <a href="{{ route('allproduct') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
 
                     <!-- Layouts -->
-
 
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Category</span>
