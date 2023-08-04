@@ -1,4 +1,4 @@
-@extends('frontend.template')
+@extends('frontend.layouts.template')
 @section('main-content')
 check out page
 @endsection

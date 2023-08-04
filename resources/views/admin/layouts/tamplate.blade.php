@@ -63,9 +63,9 @@
                     <a href="javascript:void(0);"
                         class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
-                    </a>               
+                    </a>
                 </div>
-                <a href="{{'/'}}">back to home</a>
+                <a href="{{ '/' }}">back to home</a>
 
                 <div class="menu-inner-shadow"></div>
 
@@ -95,8 +95,6 @@
                             <div data-i18n="Analytics">All Categories</div>
                         </a>
                     </li>
-
-
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text"> Sub Category</span>
                     </li>
@@ -112,8 +110,6 @@
                             <div data-i18n="Analytics">All Sub Categories</div>
                         </a>
                     </li>
-
-
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Products</span>
                     </li>

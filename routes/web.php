@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\Frontend\ClinteController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /////Frontend routes///////
+
 // Route::get('/', function () {
 //     return view('frontend.template');
 // });
@@ -38,18 +40,25 @@ Route::controller(ClinteController::class)->group(function () {
     Route::get('customer-service', 'customerservice')->name('customerservice');
 });
 
-//////Admin routes////////
-Route::get('/userprofile', [DashboardController::class, 'test']);
-
-Route::get('/userprofile', function () {
-    return view('userprofile');
+//////User routes////////
+Route::middleware(['auth'])->group(function (){
+    Route::controller(ClinteController::class)->group(function (){
+    Route::get('/category/{id}/{slug}', 'categorypage')->name('category');
+    Route::get('product-detail/{id}', 'singlepage')->name('singlepage');
+    Route::get('add-to-cart', 'addtocart')->name('addtocart');
+    Route::get('check-out', 'checkout')->name('checkout');
+    Route::get('user-profile', 'userprofile')->name('userprofile');
+    Route::get('customer-service', 'customerservice')->name('customerservice');
 });
+});
+//////Admin routes////////
 
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function () {
-        Route::get('userprofile', 'test');
+        // Route::get('userprofile', 'test');
         Route::get('/admin', 'index')->name('admindashboard');
+            
     });
 
     Route::controller(CategoryController::class)->group(function () {
