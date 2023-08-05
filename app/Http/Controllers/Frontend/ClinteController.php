@@ -27,7 +27,7 @@ class ClinteController extends Controller
         return view('frontend.layouts.checkout');
     }
     public function userprofile(){
-        return view('frontend.layouts.userprofile');
+        return view('frontend.user.userprofile');
     }
     public function customerservice(){
         return view('frontend.layouts.customerservice');
