@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function (){
     Route::get('add-to-cart', 'addtocart')->name('addtocart');
     Route::get('check-out', 'checkout')->name('checkout');
     Route::get('user-profile', 'userprofile')->name('userprofile');
+    Route::get('user-profile/pending-order', 'pendingOrder')->name('pendingOrder');
+    Route::get('user-profile/user-history', 'userHistory')->name('userHistory');
     Route::get('customer-service', 'customerservice')->name('customerservice');
 });
 });

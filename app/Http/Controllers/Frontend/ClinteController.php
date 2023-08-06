@@ -26,11 +26,18 @@ class ClinteController extends Controller
     public function checkout(){
         return view('frontend.layouts.checkout');
     }
+    public function customerservice(){
+        return view('frontend.layouts.customerservice');
+    }
     public function userprofile(){
         return view('frontend.user.userprofile');
     }
-    public function customerservice(){
-        return view('frontend.layouts.customerservice');
+
+    public function pendingOrder (){
+        return view('frontend.user.pendingOrder');
+    }
+    public function userHistory(){
+        return view('frontend.user.userHistory');
     }
 
 }

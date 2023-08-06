@@ -6,10 +6,10 @@
         <div class="col-lg-4">
             <div class="box_main">
                 <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Pending Order</a></li>
-                    <li><a href="">History</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="{{ route('userprofile')}}">Dashboard</a></li>
+                    <li><a href="{{ route('pendingOrder')}}">Pending Order</a></li>
+                    <li><a href="{{ route('userHistory')}}">History</a></li>
+                    {{-- <li><a href="{{ route('user-profile')}}">Logout</a></li> --}}
                 </ul>
             </div>
         </div>
