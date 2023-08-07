@@ -39,5 +39,8 @@ class ClinteController extends Controller
     public function userHistory(){
         return view('frontend.user.userHistory');
     }
+    public function addproductcart(){
+        return view('frontend.user.addproductcart');
+    }
 
 }

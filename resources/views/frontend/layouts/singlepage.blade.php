@@ -21,9 +21,13 @@
                     </ul>
                     </div>
                     <div class="btn_main">
-                        <div class="btn btn-warning p-1">
-                            <a href="">Add to cart</a>
-                        </div>
+                    <form action="{{ route('addproductcart',$product->id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{$product->id}}" name="product_id">
+                        <label for="product_quantity">How many pices?</label>
+                        <input type="number" min="1"> <br>
+                        <input class="btn btn-warning" type="submit" value="Add to cart">
+                    </form>
                     </div>
                 </div>
                
