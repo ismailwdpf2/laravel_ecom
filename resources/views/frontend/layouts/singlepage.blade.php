@@ -13,24 +13,24 @@
                     <h4 class="shirt_text text-left">{{ $product->product_name }}</h4>
                     <p class="price_text text-left">{{ $product->price }}-TK</p>
                     <div class="my-3 product-detail text-left">
-                    <p class="lead">{{ $product->product_description }}</p>
-                    <ul>
-                    <li>{{ $product->product_category_name }}</li>
-                    <li>{{ $product->product_subcategory_name }}</li>
-                    <li> {{ $product->quantity }}</li>
-                    </ul>
+                        <p class="lead">{{ $product->product_description }}</p>
+                        <ul>
+                            <li>{{ $product->product_category_name }}</li>
+                            <li>{{ $product->product_subcategory_name }}</li>
+                            <li> {{ $product->quantity }}</li>
+                        </ul>
                     </div>
                     <div class="btn_main">
-                    <form action="{{ route('addproductcart',$product->id) }}" method="POST">
-                        @csrf
-                        <input type="hidden" value="{{$product->id}}" name="product_id">
-                        <label for="product_quantity">How many pices?</label>
-                        <input type="number" min="1"> <br>
-                        <input class="btn btn-warning" type="submit" value="Add to cart">
-                    </form>
+                        <form action="{{ route('addproductcart', $product->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="product_id">
+                            <label for="product_quantity">How many pices?</label>
+                            <input type="number" min="1"> <br>
+                            <input class="btn btn-warning" type="submit" value="Add to cart">
+                        </form>
                     </div>
                 </div>
-               
+
             </div>
         </div>
 
@@ -39,21 +39,27 @@
         <h5 class="fashion_taital">Related Products</h5>
         <div class="fashion_section_2">
             <div class="row">
-               
+
                 @foreach ($related_product as $product)
-                <div class="col-lg-4 col-sm-4">
-                    <div class="box_main">
-                        <h4 class="shirt_text">{{ $product->product_name }}</h4>
-                        <p class="price_text">{{ $product->price }}-TK </p>
-                        <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
-                        <div class="btn_main">
-                            <div class="buy_bt"><a href="#">Buy Now</a></div>
-                            <div class="seemore_bt"><a href="{{ route('singlepage',[$product->id, $product->slug]) }}">See More</a></div>
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="box_main">
+                            <h4 class="shirt_text">{{ $product->product_name }}</h4>
+                            <p class="price_text">{{ $product->price }}-TK </p>
+                            <div class="tshirt_img"><img src="{{ asset($product->product_img) }}"></div>
+                            <div class="btn_main">
+                                <form action="{{ route('addproductcart', $product->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                   
+                                    <input class="btn btn-warning" type="submit" value="Buy now">
+                                </form>
+                                <div class="seemore_bt"><a
+                                        href="{{ route('singlepage', [$product->id, $product->slug]) }}">See More</a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-              
+                @endforeach
+
             </div>
         </div>
     </div>
