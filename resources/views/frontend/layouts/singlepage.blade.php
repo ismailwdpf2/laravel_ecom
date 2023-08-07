@@ -24,8 +24,9 @@
                         <form action="{{ route('addproductcart', $product->id) }}" method="POST">
                             @csrf
                             <input type="hidden" value="{{ $product->id }}" name="product_id">
-                            <label for="product_quantity">How many pices?</label>
-                            <input type="number" min="1"> <br>
+                            <input type="hidden" value="{{ $product->price }}" name="price">
+                            <label for="quantity">How many pices?</label>
+                            <input class="form-control" type="number" min="1" placeholder="1" name="quantity"> <br>
                             <input class="btn btn-warning" type="submit" value="Add to cart">
                         </form>
                     </div>
@@ -50,8 +51,9 @@
                                 <form action="{{ route('addproductcart', $product->id) }}" method="POST">
                                     @csrf
                                     <input type="hidden" value="{{ $product->id }}" name="product_id">
-                                   
-                                    <input class="btn btn-warning" type="submit" value="Buy now">
+                                                    <input type="hidden" value="{{ $product->price }}" name="price">
+                                                    <input type="hidden" value="1" name="quantity">
+                                                    <input class="btn btn-warning" type="submit" value="Buy now">
                                 </form>
                                 <div class="seemore_bt"><a
                                         href="{{ route('singlepage', [$product->id, $product->slug]) }}">See More</a></div>

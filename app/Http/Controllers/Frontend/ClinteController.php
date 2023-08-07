@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClinteController extends Controller
 {
@@ -20,12 +22,7 @@ class ClinteController extends Controller
         $related_product = Product::where('product_subcategory_id', $subcat_id)->latest()->get();
         return view('frontend.layouts.singlepage', compact('product','related_product'));
     }
-    public function addtocart(){
-        return view('frontend.layouts.addtocart');
-    }
-    public function checkout(){
-        return view('frontend.layouts.checkout');
-    }
+    
     public function customerservice(){
         return view('frontend.layouts.customerservice');
     }
@@ -39,8 +36,22 @@ class ClinteController extends Controller
     public function userHistory(){
         return view('frontend.user.userHistory');
     }
-    public function addproductcart(){
-        return view('frontend.user.addproductcart');
+    public function addproductcart(Request $request){
+        $product_price = $request->price;
+        $quantity = $request->quantity;
+        $price = $product_price * $quantity;
+        Cart::insert([       
+            'product_id' => $request->product_id,
+            'user_id' => Auth::id(),
+            'quantity' => $request->quantity,
+            'price' => $price
+        ]);
+        return redirect()->route('addtocart')->with('message','your item added to cart successfully');
     }
-
+    public function addtocart(){
+        return view('frontend.layouts.addtocart');
+    }
+    public function checkout(){
+        return view('frontend.layouts.checkout');
+    }
 }

@@ -1,4 +1,8 @@
 @extends('frontend.layouts.template')
 @section('main-content')
-add to cart page
+@if (session()->has('message'))
+<div class="alert alert-seccecc">
+    {{ session()->get('message') }}
+</div>
+@endif
 @endsection
