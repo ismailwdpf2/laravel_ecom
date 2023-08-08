@@ -34,9 +34,6 @@ Route::controller(HomeController::class)->group(function () {
 Route::controller(ClinteController::class)->group(function () {
     Route::get('/category/{id}/{slug}', 'categorypage')->name('category');
     Route::get('product-detail/{id}', 'singlepage')->name('singlepage');
-    Route::get('add-to-cart', 'addtocart')->name('addtocart');
-    Route::get('check-out', 'checkout')->name('checkout');
-    Route::get('user-profile', 'userprofile')->name('userprofile');
     Route::get('customer-service', 'customerservice')->name('customerservice');
 });
 

@@ -36,6 +36,15 @@ class ClinteController extends Controller
     public function userHistory(){
         return view('frontend.user.userHistory');
     }
+   
+    public function addtocart(){
+        $userid =Auth::id();
+        $cart_items = Cart::where('user_id', $userid)->get();
+        return view('frontend.layouts.addtocart', compact('cart_items'));
+    }
+    public function checkout(){
+        return view('frontend.layouts.checkout');
+    }
     public function addproductcart(Request $request){
         $product_price = $request->price;
         $quantity = $request->quantity;
@@ -47,11 +56,5 @@ class ClinteController extends Controller
             'price' => $price
         ]);
         return redirect()->route('addtocart')->with('message','your item added to cart successfully');
-    }
-    public function addtocart(){
-        return view('frontend.layouts.addtocart');
-    }
-    public function checkout(){
-        return view('frontend.layouts.checkout');
     }
 }
