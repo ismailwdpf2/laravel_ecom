@@ -57,4 +57,10 @@ class ClinteController extends Controller
         ]);
         return redirect()->route('addtocart')->with('message','your item added to cart successfully');
     }
+    public function removecart($id){
+        Cart::findOrFail($id)->delete();
+        return redirect()->route('addtocart')->with('message','your item removed from cart successfully');
+    }
+
+    public function shippingaddress()
 }
