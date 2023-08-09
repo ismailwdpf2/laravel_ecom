@@ -49,7 +49,7 @@
     <!-- banner bg main start -->
     <div class="">
         <!-- header top section start -->
-        <div class="container">
+        <div class="">
             <div class="bg-dark">
                 <div class="row">
                     <div class="col-sm-12">
@@ -96,8 +96,8 @@
         <!-- header top section start -->
 
         <!-- header section start -->
-        <div class="container header_section d-block ">
-            <div class=" container bg-dark p-2">
+        <div class=" header_section d-block ">
+            <div class="  bg-dark p-2">
                 <div class="containt_main">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

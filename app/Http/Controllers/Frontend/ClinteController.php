@@ -62,5 +62,7 @@ class ClinteController extends Controller
         return redirect()->route('addtocart')->with('message','your item removed from cart successfully');
     }
 
-    public function shippingaddress()
+    public function shippingaddress(){
+        return view('frontend.user.shippingaddress');
+    }
 }
