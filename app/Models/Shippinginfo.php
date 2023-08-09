@@ -12,6 +12,6 @@ class Shippinginfo extends Model
         'user_id',
         'phone_number',
         'city',
-        'address'
+        'address',
     ];
 }

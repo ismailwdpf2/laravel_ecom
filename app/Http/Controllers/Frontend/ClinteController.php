@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Shippinginfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,7 +44,10 @@ class ClinteController extends Controller
         return view('frontend.layouts.addtocart', compact('cart_items'));
     }
     public function checkout(){
-        return view('frontend.layouts.checkout');
+        $userid =Auth::id();
+        $cart_items = Cart::where('user_id', $userid)->get();
+        $shipping_address = Shippinginfo::where('user_id', $userid)->first();
+        return view('frontend.user.checkout',compact('cart_items','shipping_address'));
     }
     public function addproductcart(Request $request){
         $product_price = $request->price;
@@ -65,4 +69,30 @@ class ClinteController extends Controller
     public function shippingaddress(){
         return view('frontend.user.shippingaddress');
     }
+    // public function addshippingaddress(Request $request){
+    //     Shippinginfo::insert([
+    //         'user_id' => Auth::id(),
+    //         'phone_number' => $request->phone_number,
+    //         'city' => $request->city,
+    //         'address' => $request->address,
+    //     ]);
+    //     return redirect()->route('checkout');
+    // }
+    public function Addshippingaddress(Request $request) {
+        $this->validate($request, [
+            'phone_number' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+        ]);
+    
+        Shippinginfo::insert([
+            'user_id' => Auth::id(),
+            'phone_number' => $request->phone_number,
+            'city' => $request->city,
+            'address' => $request->address,
+        ]);
+        
+        return redirect()->route('checkout')->with('message','checkout success');
+    }
+    
 }
