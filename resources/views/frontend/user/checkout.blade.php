@@ -68,11 +68,11 @@
                 </div>
             </div>
         </div>
-        <form action="">
+        <form action="" method="POST">
             @csrf
             <input type="submit" value="Cancel Order" class="btn btn-danger mx-3">
         </form>
-        <form action="">
+        <form action="{{ route('placeorder') }}" method="POST">
             @csrf
             <input type="submit" value="Place Order" class="btn btn-success">
         </form>

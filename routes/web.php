@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function (){
     Route::post('add-product-cart/{id}', 'addproductcart')->name('addproductcart');
     Route::get('shipping-address', 'shippingaddress')->name('shippingaddress');
     Route::post('add-shipping-address', 'Addshippingaddress')->name('addshippingaddress');
+    Route::post('place-order', 'placeorder')->name('placeorder');
     Route::get('check-out', 'checkout')->name('checkout');
     Route::get('user-profile', 'userprofile')->name('userprofile');
     Route::get('user-profile/pending-order', 'pendingOrder')->name('pendingOrder');

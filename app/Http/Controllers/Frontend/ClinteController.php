@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Shippinginfo;
 use Illuminate\Http\Request;
@@ -93,6 +94,25 @@ class ClinteController extends Controller
         ]);
         
         return redirect()->route('checkout')->with('message','checkout success');
+    }
+    public function placeorder(){
+        $userid =Auth::id();
+        $shipping_address = Shippinginfo::where('user_id', $userid)->first();
+        $cart_items = Cart::where('user_id', $userid)->get();
+
+       foreach($cart_items as $item){
+        Order::insert([
+            'userid' => $userid,
+            'shipping_phoneNo'=>$shipping_address->phone_number,
+            'shipping_city'=> $shipping_address->city,
+            'shipping_address'=> $shipping_address->address,
+            'product_id'=>$item->product_id,
+            'quantity'=>$item->quantity,
+            'total_price'=>$item->price,
+        ]);
+        $id  = $item->id;
+        Cart::findOrFail($id)->delete();
+       }
     }
     
 }
