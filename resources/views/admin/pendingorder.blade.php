@@ -3,9 +3,11 @@
 pending-order
 @endsection
 @section('content')
-<div class="container">
+<div class="container my-3">
     <div class="card">
-        <div class="card-title">
+        <div class="card-title p-2">
+            <h4 class="text-center">Pending Orders
+            </h4>
             <div class="card-body">              
                     <table class="table">
                         <tr>
@@ -31,7 +33,7 @@ pending-order
                             <td>{{ $order->product_id }}</td>                        
                             <td>{{ $order->quantity }}</td>                        
                             <td>{{ $order->total_price }}</td>                        
-                            <td><a href="" class="btn btn-success">Approve</a></td>                        
+                            <td><a href="" class="btn btn-success">Confirm Order</a></td>                        
                         </tr>
                         @endforeach
                     </table>

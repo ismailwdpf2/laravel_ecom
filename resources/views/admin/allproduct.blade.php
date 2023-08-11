@@ -32,7 +32,7 @@ all-product
                         <td>
                             <img style="height: 100px;" src="{{asset($product->product_img)}}" alt="img">
                             <br>
-                            <a href="{{route('editProductImg', $product->id) }}" class="btn-primary">Change Image</a>
+                            <a href="{{route('editProductImg', $product->id) }}" class="btn-success">Change Image</a>
                         </td>
                         <td>{{$product->price }}</td>
                         <td>
