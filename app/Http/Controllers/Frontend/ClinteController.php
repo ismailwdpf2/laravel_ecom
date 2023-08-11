@@ -33,7 +33,8 @@ class ClinteController extends Controller
     }
 
     public function pendingOrder (){
-        return view('frontend.user.pendingOrder');
+        $pending_orders = Order::where('status', 'pending')->latest()->get();
+        return view('frontend.user.pendingOrder', compact('pending_orders'));
     }
     public function userHistory(){
         return view('frontend.user.userHistory');
@@ -42,7 +43,7 @@ class ClinteController extends Controller
     public function addtocart(){
         $userid =Auth::id();
         $cart_items = Cart::where('user_id', $userid)->get();
-        return view('frontend.layouts.addtocart', compact('cart_items'));
+        return view('frontend.user.addtocart', compact('cart_items'));
     }
     public function checkout(){
         $userid =Auth::id();
@@ -113,6 +114,7 @@ class ClinteController extends Controller
         $id  = $item->id;
         Cart::findOrFail($id)->delete();
        }
+       return redirect()->route('pendingOrder')->with('message','your order has been processed');
     }
     
 }
