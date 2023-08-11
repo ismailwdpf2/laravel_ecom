@@ -114,6 +114,8 @@ class ClinteController extends Controller
         $id  = $item->id;
         Cart::findOrFail($id)->delete();
        }
+       Shippinginfo::where('user_id', $userid)->first()->delete();
+
        return redirect()->route('pendingOrder')->with('message','your order has been processed');
     }
     
