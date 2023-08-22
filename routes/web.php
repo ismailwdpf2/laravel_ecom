@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('user-profile/user-history', 'userHistory')->name('userHistory');
     Route::get('customer-service', 'customerservice')->name('customerservice');
     Route::get('remove-cart-item/{id}', 'removecart')->name('removecart');
+    Route::get('invoice', 'invoice')->name('invoice');
 });
 });
 //////Admin routes////////
@@ -96,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('admin/pending-order', 'Pendingorder')->name('pendingorder');
-        Route::get('complete-order', 'CompleteOrder')->name('completeorder');
+        Route::get('view-order/{id}', 'view_order')->name('view_order');
     });
 });
 

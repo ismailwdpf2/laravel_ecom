@@ -8,14 +8,17 @@
     <div class="table-responsive">
     <table class="table">
         <tr>
-            <td>Product ID</td>
+            <td>User ID</td>
+            <td>Quantity</td>
             <td>Price</td>
         </tr>
     @foreach ($pending_orders as $order )
    
         <tr>
-            <td>{{ $order->product_id }}</td>
+            <td>{{ $order->userid }}</td>
+            <td>{{ $order->quantity }}</td>
             <td>{{ $order->total_price }}</td>
+     
         </tr>          
     @endforeach
 </table>

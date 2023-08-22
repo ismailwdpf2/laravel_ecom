@@ -26,12 +26,11 @@
                             <input type="hidden" value="{{ $product->id }}" name="product_id">
                             <input type="hidden" value="{{ $product->price }}" name="price">
                             <label for="quantity">How many pices?</label>
-                            <input class="form-control" type="number" min="1" placeholder="1" name="quantity"> <br>
+                            <input class="form-control" type="number" min="1" placeholder="0" name="quantity"> <br>
                             <input class="btn btn-warning" type="submit" value="Add to cart">
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
 

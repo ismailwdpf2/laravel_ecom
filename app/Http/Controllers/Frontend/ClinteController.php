@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Shippinginfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ClinteController extends Controller
 {
@@ -96,7 +97,8 @@ class ClinteController extends Controller
         
         return redirect()->route('checkout')->with('message','checkout success');
     }
-    public function placeorder(){
+    public function placeorder(Request $request){
+        dd($request);
         $userid =Auth::id();
         $shipping_address = Shippinginfo::where('user_id', $userid)->first();
         $cart_items = Cart::where('user_id', $userid)->get();
@@ -107,7 +109,6 @@ class ClinteController extends Controller
             'shipping_phoneNo'=>$shipping_address->phone_number,
             'shipping_city'=> $shipping_address->city,
             'shipping_address'=> $shipping_address->address,
-            'product_id'=>$item->product_id,
             'quantity'=>$item->quantity,
             'total_price'=>$item->price,
         ]);
@@ -117,6 +118,10 @@ class ClinteController extends Controller
        Shippinginfo::where('user_id', $userid)->first()->delete();
 
        return redirect()->route('pendingOrder')->with('message','your order has been processed');
+    }
+
+    public function invoice(){
+        return view('frontend.user.invoice');
     }
     
 }

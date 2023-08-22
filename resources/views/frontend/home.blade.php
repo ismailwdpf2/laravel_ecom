@@ -8,8 +8,13 @@
             <div class="carousel-inner">
                 {{-- <div class="carousel-item active"> --}}
                     <div class="container">
+                    
+                 
+                </ul>
                         <h1 class="fashion_taital">All Products</h1>
+                        
                         <div class="fashion_section_2">
+                            
                             <div class="row">
                                 @foreach ($allproducts as $product)
                                     <div class="col-lg-4 col-sm-4">

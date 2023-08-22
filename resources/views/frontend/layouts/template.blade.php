@@ -56,13 +56,14 @@
                         <div class="custom_menu">
                             <ul>
                                 <li><a href="{{ route('home') }}">Home</a></li>
-                                <li><a href="#">Category</a></li>
+                               
                                 <li><a href="#">New Releases</a></li>
                                 <li><a href="#">Today's Deals</a></li>
                                 <li><a href="{{ 'customer-service' }}">Customer Service</a></li>
+                                <li><a href="{{route('addtocart')}}">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    <span class="padding_10">Cart</span></a></li>
                                 {{-- login reg and logout --}}
-
-
                                 <li>
                                     @if (Auth::check())
                                         <!-- Authentication -->
@@ -122,21 +123,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header_box">
-
-                        <div class="login_menu ">
-                            <ul>
-                                <li><a href="#">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                        <span class="padding_10">Cart</span></a>
-                                </li>
-                                {{-- <li>
-                                    <a href="#">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="padding_10">Profile</span></a>
-                                </li> --}}
-                            </ul>
-                        </div>
+                    <div class="header_box">                      
                     </div>
                 </div>
             </div>
