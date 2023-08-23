@@ -38,24 +38,25 @@ Route::controller(ClinteController::class)->group(function () {
 });
 
 //////User routes////////
-Route::middleware(['auth'])->group(function (){
-    Route::controller(ClinteController::class)->group(function (){
-    Route::get('/category/{id}/{slug}', 'categorypage')->name('category');
-    Route::get('product-detail/{id}', 'singlepage')->name('singlepage');
-    Route::get('add-to-cart', 'addtocart')->name('addtocart');
-    Route::post('add-product-cart/{id}', 'addproductcart')->name('addproductcart');
-    Route::get('shipping-address', 'shippingaddress')->name('shippingaddress');
-    Route::post('add-shipping-address', 'Addshippingaddress')->name('addshippingaddress');
-    Route::post('place-order', 'placeorder')->name('placeorder');
-    Route::get('check-out', 'checkout')->name('checkout');
-    Route::get('user-profile', 'userprofile')->name('userprofile');
-    Route::get('user-profile/pending-order', 'pendingOrder')->name('pendingOrder');
-    Route::get('user-profile/user-history', 'userHistory')->name('userHistory');
-    Route::get('customer-service', 'customerservice')->name('customerservice');
-    Route::get('remove-cart-item/{id}', 'removecart')->name('removecart');
-    Route::get('invoice', 'invoice')->name('invoice');
+Route::middleware(['auth'])->group(function () {
+    Route::controller(ClinteController::class)->group(function () {
+        Route::get('/category/{id}/{slug}', 'categorypage')->name('category');
+        Route::get('product-detail/{id}', 'singlepage')->name('singlepage');
+        Route::get('add-to-cart', 'addtocart')->name('addtocart');
+        Route::post('add-product-cart/{id}', 'addproductcart')->name('addproductcart');
+        Route::get('shipping-address', 'shippingaddress')->name('shippingaddress');
+        Route::post('add-shipping-address', 'Addshippingaddress')->name('addshippingaddress');
+        Route::post('place-order', 'placeorder')->name('placeorder');
+        Route::get('check-out', 'checkout')->name('checkout');
+        Route::get('user-profile', 'userprofile')->name('userprofile');
+        Route::get('user-profile/pending-order', 'pendingOrder')->name('pendingOrder');
+        Route::get('user-profile/user-history', 'userHistory')->name('userHistory');
+        Route::get('customer-service', 'customerservice')->name('customerservice');
+        Route::get('remove-cart-item/{id}', 'removecart')->name('removecart');
+        Route::get('invoice', 'invoice')->name('invoice');
+    });
 });
-});
+
 //////Admin routes////////
 
 Route::middleware(['auth'])->group(function () {
@@ -63,7 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         // Route::get('userprofile', 'test');
         Route::get('/admin', 'index')->name('admindashboard');
-            
     });
 
     Route::controller(CategoryController::class)->group(function () {
@@ -97,7 +97,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('admin/pending-order', 'Pendingorder')->name('pendingorder');
-        Route::get('view-order/{id}', 'view_order')->name('view_order');
+        // Route::post('view-order/{id}', 'view_order')->name('view_order');
+        Route::get('view-order/{id}', 'viewOrder')->name('view_order');
+        Route::post('update-order/{id}', 'updateOrder')->name('update_order');
+
+        // Route::get('view-order/{id}', 'DoctorCommentController@viewOrder')->name('view_order');
+        // Route::post('update-order/{id}', 'DoctorCommentController@updateOrder')->name('update_order');
     });
 });
 

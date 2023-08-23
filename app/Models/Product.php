@@ -19,4 +19,8 @@ class Product extends Model
         'product_img',
         'slug',
     ];
+
+    public function order(){
+        return $this->hasMany(OrderDetail::class);
+    }
 }

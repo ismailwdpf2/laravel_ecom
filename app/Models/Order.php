@@ -14,11 +14,18 @@ class Order extends Model
         'shipping_city',
         'shipping_address',
         'product_name',
-        'quantity',
+        // 'quantity',
         'total_price',  
     ];
+
+
+public function users(){
+    return $this->belongsTo(User::class);
+}
+
     public function orderdetails()
     {
     return $this->hasMany(OrderDetail::class);
     }
+   
 }

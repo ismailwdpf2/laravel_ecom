@@ -28,10 +28,10 @@
                                         <li>Address: {{ $order->shipping_address }}</li>
                                     </ul>
                                 </td>
-
+                                {{-- {{route('view_order')}} --}}
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->total_price }}</td>
-                                <td><a href="{{route('view_order')}}" class="btn btn-info">View Order</a></td>
+                                <td><a href="" class="btn btn-info">View Order</a></td>
                                 <td><a href="" class="btn btn-success">Confirm Order</a></td>
                             </tr>
                         @endforeach

@@ -19,7 +19,6 @@ class CategoryController extends Controller
         return view('admin.addcategory');
     }
 
-
     public function storecategory(Request $request)
     {
         $request->validate([

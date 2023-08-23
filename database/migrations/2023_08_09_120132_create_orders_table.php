@@ -13,13 +13,23 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('userid');
+            
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
+
             $table->string('shipping_phoneNo');
             $table->string('shipping_city');
             $table->string('shipping_address'); 
-            $table->string('product_name'); 
-            $table->integer('quantity');
+            $table->string('payment');
+            $table->string('discount');
+            $table->string('trx_id');
+            $table->string('comment');
+           
+            // $table->integer('quantity');
             $table->integer('total_price');
+            $table->string('status')->default("pending");
             $table->timestamps();
         });
     }
