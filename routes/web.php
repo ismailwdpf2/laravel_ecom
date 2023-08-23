@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 /////Frontend routes///////
 
-// Route::get('/', function () {
-//     return view('frontend.template');
-// });
+
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
@@ -53,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('user-profile/user-history', 'userHistory')->name('userHistory');
         Route::get('customer-service', 'customerservice')->name('customerservice');
         Route::get('remove-cart-item/{id}', 'removecart')->name('removecart');
-        Route::get('invoice', 'invoice')->name('invoice');
+        Route::get('invoice/{id}', 'invoice')->name('invoice');
     });
 });
 
@@ -96,8 +94,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('admin/pending-order', 'Pendingorder')->name('pendingorder');
-        Route::get('view-order/{id}', 'viewOrder')->name('view_order');
-        Route::post('update-order/{id}', 'updateOrder')->name('update_order');
+        Route::get('admin/view-order', 'viewOrder')->name('viewOrder');
+        Route::post('update-order', 'updateOrder')->name('update_order');
     });
 });
 

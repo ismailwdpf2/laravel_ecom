@@ -5,20 +5,16 @@
 		
 <div class="">
 			<h1 class="bg-info py-3">Invoice</h1>
+		
 			<address >
-				<span>Isamil</span><br>
-				<span>722/3, Bashundhara len<br>kazipara,</span>
-				<span>01244754</span>
+								
+				{{-- <p>Invoice Id: {{ $order->id}}</p> --}}
+				<p>Name : {{$order->user->name}}</p>
+				<p>Address : {{ $order->shipping_address}} , {{ $order->shipping_city}}</p>
+				<p>Phone Number : {{ $order->shipping_phoneNo }}</p>
+				<p>Date & time : {{ $order->updated_at}}</p>
+										
 			</address>
-			<table class="meta">
-				<tr>
-					<th><span >Invoice No</span></th>
-					<td><span >02</span></td>
-				</tr>
-				<tr>
-					<th><span >Date</span></th>
-					<td><span >January 1, 2023</span></td>
-				</tr>
 			
 			</table>
 			<table class="inventory">
@@ -31,23 +27,18 @@
 					</tr>
 				</thead>
 				<tbody>
+                    @foreach ($orderDetails as $order)
 					<tr>
-						<td><span >Phone</span></td>
-						<td><span >1</span></td>
-						<td><span >25000</span></td>
-						<td><span >25000</span></td>
+						<td><span >{{ $order->Product->product_name }}</span></td>
+						<td><span >{{ $order->quantity }}</span></td>
+						<td><span >{{ $order->price }}</span></td>
+						<td><span >{{ $order->total_price }}</span></td>
 
 					</tr>
+					@endforeach
 				</tbody>
-				<tbody>
-					<tr>
-						<td><span >T-shirt</span></td>
-						<td><span >2</span></td>
-						<td><span >1200</span></td>
-						<td><span >2400</span></td>
-
-					</tr>
-				</tbody>
+			
+			
 			</table>
 			
 		</article>

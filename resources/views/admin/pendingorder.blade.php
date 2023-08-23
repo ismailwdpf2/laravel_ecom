@@ -11,16 +11,16 @@
                 <div class="card-body">
                     <table class="table">
                         <tr>
-                            <td>User ID</td>
+                            {{-- <td>User ID</td> --}}
                             <td>Shipping Information</td>
-                            <td>Quantity</td>
+                        
                             <td>Total Pay</td>
 
                             <td>Action</td>
                         </tr>
                         @foreach ($pending_orders as $order)
                             <tr>
-                                <td>{{ $order->userid }}</td>
+                                {{-- <td>{{ $order->user_id }}</td> --}}
                                 <td>
                                     <ul>
                                         <li>Phone Number: {{ $order->shipping_phoneNo }}</li>
@@ -28,10 +28,10 @@
                                         <li>Address: {{ $order->shipping_address }}</li>
                                     </ul>
                                 </td>
-                                {{-- {{route('view_order')}} --}}
-                                <td>{{ $order->quantity }}</td>
+                                
+                               
                                 <td>{{ $order->total_price }}</td>
-                                <td><a href="" class="btn btn-info">View Order</a></td>
+                                <td><a href="{{route('viewOrder')}}" class="btn btn-info">View Order</a></td>
                                 <td><a href="" class="btn btn-success">Confirm Order</a></td>
                             </tr>
                         @endforeach

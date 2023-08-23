@@ -28,12 +28,12 @@
                         @endphp
                         @foreach ($cart_items as $item)
                             <tr>
-                                {{-- @php
+                                @php
                                     $product_name = App\Models\Product::where('id', $item->product_id)->value('product_name');
                                     $image = App\Models\Product::where('id', $item->product_id)->value('product_img');
-                                @endphp --}}
-                                {{-- <td>{{ $product_name }}</td> --}}
-                                {{-- <td><img style="height:50px" src="{{ asset($image) }}" alt="img"></td> --}}
+                                @endphp
+                                <td>{{ $product_name }}</td>
+                                <td><img style="height:50px" src="{{ asset($image) }}" alt="img"></td>
 
                                 <td>{{ $item->quantity }}</td>
                                 <td>{{ $item->price }}</td>
@@ -59,9 +59,7 @@
             <input type="submit" value="Cancel Order" class="btn btn-danger mx-3">
         </form> <br>
         <form action="{{ route('placeorder') }}" method="POST">
-            {{-- @if(isset($order)) --}}
-            {{-- <p>Order ID: {{ $order->id }}</p>
-        <form action=" {{ route('update_order', ['id' => $order->id]) }}" method="POST"> --}}
+     
             @csrf
             <label for="payment">Payment method:</label>
 

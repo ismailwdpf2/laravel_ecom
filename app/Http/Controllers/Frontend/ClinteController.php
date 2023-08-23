@@ -84,7 +84,7 @@ class ClinteController extends Controller
     {
         return view('frontend.user.shippingaddress');
     }
-
+    
     public function Addshippingaddress(Request $request)
     {
         $this->validate($request, [
@@ -146,8 +146,18 @@ class ClinteController extends Controller
     }
 
 
-    public function invoice()
+    public function invoice($id)
     {
-        return view('frontend.user.invoice');
+        $order = Order::find($id);
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found.');
+        }
+    
+        $orderDetails = OrderDetail::where('order_id', $id)->get();
+        
+        return view('frontend.user.invoice', compact('order', 'orderDetails'));
+    
+        
     }
 }

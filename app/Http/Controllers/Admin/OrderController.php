@@ -9,20 +9,19 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-  public function Pendingorder()
-  {
+  public function Pendingorder(){
     $pending_orders = Order::where('status', 'pending')->latest()->get();
-    return view('admin.Pendingorder', compact('pending_orders'));
+    return view('admin.Pendingorder',compact('pending_orders'));
   }
-
-  public function viewOrder($id)
-  {
-    $order = Order::with("orderdetails")->find($id);
-
-    return view('admin.viewOrder', compact('order'));
-  }
-  public function updateOrder(Request $request, $id)
-  {
+  
+public function viewOrder()
+{
+    // $order = Order::with("orderdetails")->find($id);
+    // return view('admin.viewOrder', compact('order'));
+    return view('admin.viewOrder');
+}
+public function updateOrder(Request $request, $id)
+{
     $order = Order::find($id);
 
     $order_details = new OrderDetail;
@@ -37,5 +36,6 @@ class OrderController extends Controller
     $order_details->save();
 
     return redirect()->route('view_order', ['id' => $order->id])->with('success', 'Order details updated successfully.');
-  }
+}
+
 }

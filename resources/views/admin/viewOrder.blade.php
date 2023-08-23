@@ -13,14 +13,21 @@
          <td>Quantity</td>
          <td>Price</td>
         </thead>
-        @foreach ($order_details as $order_detail)
+        <tr>
+            <td>12</td>
+            <td>Chair</td>
+            <td>1</td>
+            <td>1400</td>
+        </tr>
+        {{-- @foreach ($order_details as $order_detail)
         <tr>
             <td>{{$order_detail->product_id}}</td>
             <td>{{$order_detail->product_name}}</td>
             <td>{{$order_detail->quantity}}</td>
             <td>{{$order_detail->price}}</td>         
         </tr>
-        @endforeach
+        @endforeach --}}
     </table>
+    
 </div>
 @endsection
