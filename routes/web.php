@@ -58,7 +58,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //////Admin routes////////
-
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function () {
@@ -97,20 +96,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('admin/pending-order', 'Pendingorder')->name('pendingorder');
-        // Route::post('view-order/{id}', 'view_order')->name('view_order');
         Route::get('view-order/{id}', 'viewOrder')->name('view_order');
         Route::post('update-order/{id}', 'updateOrder')->name('update_order');
-
-        // Route::get('view-order/{id}', 'DoctorCommentController@viewOrder')->name('view_order');
-        // Route::post('update-order/{id}', 'DoctorCommentController@updateOrder')->name('update_order');
     });
 });
-
-
-////default Admin routes////////
-// Route::get('/admin', function () {
-//     return view('dashboard');  
-// })->middleware(['auth', 'verified'])->name("admin");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
