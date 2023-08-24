@@ -3,5 +3,5 @@
 Dashboard-laravel-ecom
 @endsection
 @section('content')
-<h1>Dashboard</h1>
+<h1>Welcome to Dashboard !</h1>
 @endsection

@@ -95,6 +95,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(OrderController::class)->group(function () {
         Route::get('admin/pending-order', 'Pendingorder')->name('pendingorder');
         Route::get('admin/view-order', 'viewOrder')->name('viewOrder');
+        Route::get('admin/corfirm','corfirmorder')->name('corfirmorder');
+        Route::get('admin/delivary','delivary')->name('delivary');
         Route::post('update-order', 'updateOrder')->name('update_order');
     });
 });

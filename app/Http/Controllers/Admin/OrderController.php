@@ -20,6 +20,12 @@ public function viewOrder()
     // return view('admin.viewOrder', compact('order'));
     return view('admin.viewOrder');
 }
+public function corfirmorder(){
+  return view('admin.confirmorder');
+}
+public function delivary(){
+  return view('admin.delivary');
+}
 public function updateOrder(Request $request, $id)
 {
     $order = Order::find($id);

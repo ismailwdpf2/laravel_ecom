@@ -32,7 +32,7 @@
                                
                                 <td>{{ $order->total_price }}</td>
                                 <td><a href="{{route('viewOrder')}}" class="btn btn-info">View Order</a></td>
-                                <td><a href="" class="btn btn-success">Confirm Order</a></td>
+                                <td><a href="{{ route('corfirmorder') }}" class="btn btn-success">Confirm Order</a></td>
                             </tr>
                         @endforeach
                     </table>

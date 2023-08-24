@@ -9,7 +9,7 @@
     <table class="table">
         <tr>
             <td>User ID</td>
-            <td>Quantity</td>
+            <td>Payment</td>
             <td>Price</td>
         </tr>
     @foreach ($pending_orders as $order )
