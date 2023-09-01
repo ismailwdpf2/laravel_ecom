@@ -99,7 +99,7 @@ class ClinteController extends Controller
             'city' => $request->city,
             'address' => $request->address,
         ]);
-
+        
         return redirect()->route('checkout')->with('message', 'checkout success');
     }
 
@@ -141,6 +141,7 @@ class ClinteController extends Controller
         Shippinginfo::where('user_id', $userid)->first()->delete();
         // Cart::findOrFail($id)->delete();
         Cart::where('user_id', $userid)->delete();
+        Shippinginfo::where('user_id', $userid)->delete(); //previous shipping info delete line
 
         return redirect()->route('pendingOrder')->with('message', 'Your order has been processed. Order ID: ' . $o->id);
     }
